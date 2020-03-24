@@ -36,3 +36,7 @@
 ehthumbs.db
 Thumbs.db
 
+# Compiler output directories
+bin
+obj
+
