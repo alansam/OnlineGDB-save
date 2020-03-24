@@ -10,3 +10,6 @@ Project library: <https://www.onlinegdb.com/myfiles>
 - [**005-choose-random**](https://onlinegdb.com/SJR2ElgUU)
 - [**006-prototype-positions**](https://onlinegdb.com/BJFiH-xI8)
 - [**007-Nested Function**](https://onlinegdb.com/rJRyhGV8L)
+- [**008-Digits-Reverse**](https://onlinegdb.com/BkZ5MuSUU)
+- [**009-Sum-of-Digits**](https://onlinegdb.com/rJY9yfwLI)
+- [**010-StringCatting**](https://onlinegdb.com/H1dXmeuUU)
