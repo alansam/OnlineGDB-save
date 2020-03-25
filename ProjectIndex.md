@@ -13,3 +13,4 @@ Project library: <https://www.onlinegdb.com/myfiles>
 - [**008-Digits-Reverse**](https://onlinegdb.com/BkZ5MuSUU)
 - [**009-Sum-of-Digits**](https://onlinegdb.com/rJY9yfwLI)
 - [**010-StringCatting**](https://onlinegdb.com/H1dXmeuUU)
+- [**011-Primes**](https://onlinegdb.com/Hyy_HSd8U)
