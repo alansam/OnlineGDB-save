@@ -14,3 +14,5 @@ Project library: <https://www.onlinegdb.com/myfiles>
 - [**009-Sum-of-Digits**](https://onlinegdb.com/rJY9yfwLI)
 - [**010-StringCatting**](https://onlinegdb.com/H1dXmeuUU)
 - [**011-Primes**](https://onlinegdb.com/Hyy_HSd8U)
+- [**012-Dec2Bin**](https://onlinegdb.com/BJs8-2Y8I)
+- [**013-VLAs**](https://onlinegdb.com/H17APnsUL)
