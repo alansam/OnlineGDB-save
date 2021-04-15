@@ -1,5 +1,6 @@
 # Compiled source #
 ###################
+a.out
 *.com
 *.class
 *.dll
@@ -39,4 +40,9 @@ Thumbs.db
 # Compiler output directories
 bin
 obj
-
+/bin
+/lib
+/obj
+/log
+/tmp
+/temp
