@@ -21,7 +21,8 @@ int main() {
   printf("Hello %s\n", alan_hangul);
   printf("Hello %s\n", alan_kana);
   printf("Hello %s\n", alan_chinese);
-  printf("Hello %s\n", alan_chinese);
+  printf("Hello %s\n", alan_taiwan);
 
   return 0;
 }
+
