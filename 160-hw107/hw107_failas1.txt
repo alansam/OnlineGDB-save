@@ -1,0 +1,6 @@
+4 3
+Hermis  6 1 2     scribble        
+Bobby 1 1 1
+Hera  2 6 6
+Billy 2 2 2
+Barney  3 3 3
