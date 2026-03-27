@@ -13,13 +13,15 @@ namespace pang {
 inline
 static
 std::vector<std::string_view> pangrams {
+  "Quick brown fox jumps over the lazy dog"sv,
   "The quick brown fox jumps over the lazy dog"sv,
   "A quick brown fox jumps over the lazy dog"sv,
   "The quick brown fox jumps over a lazy dog"sv,
   "The kuick brown fox jumps over the lazy dog"sv,  // should fail
   "The quick brown fox jumped over the lazy dog"sv, // common error
   "The quick brown fox jumped over the lazy dogs"sv,
-  "Thë qüïck bröwñ föx jümps övër ä läzy dög"sv,    // contains accented letters, should fail
+  "Thë qüïck bröwñ föx jümps övër ä läzy dög"sv,  // contains accented letters, should fail
+//FIXME  "ThÃ« qÃ¼Ã¯ck brÃ¶wÃ± fÃ¶x jÃ¼mps Ã¶vÃ«r Ã¤ lÃ¤zy dÃ¶g"sv,    // contains accented letters, should fail
   "\n"sv,
 
   /*
@@ -30,7 +32,7 @@ std::vector<std::string_view> pangrams {
    *   the famous first one?
    *
    *   A quick brown fox jumps over the lazy dog OR The quick brown fox jumps over a lazy dog.
-   *   At 33 letters, the most famous, BUT make sure one of them id an “a;” they cannot both be a “the.”
+   *   At 33 letters, the most famous, BUT make sure one of them id an "a" they cannot both be a "the".
    *
    * @see <a href="https://mseffie.com/assignments/calligraphy/Plethora%20of%20Pangrams.pdf">Plethora of Pangrams</a>
    */
@@ -45,7 +47,7 @@ std::vector<std::string_view> pangrams {
   "How vexingly quick daft zebras jump"sv, // (30)
   "The five boxing wizards jump quickly"sv, // (31)
   "Jackdaws love my big sphinx of quartz"sv, // (31) Similarly, used by Windows XP for some fonts.
-  "Pack my box with five dozen liquor jugs"sv, // (32) According to Wikipedia, this one is used on NASA’s Space Shuttle.
+  "Pack my box with five dozen liquor jugs"sv, // (32) According to Wikipedia, this one is used on NASA's Space Shuttle.
   "Big Fuji waves pitch enzymed kex liquor"sv, // (33)
   "A quick brown fox jumps over the lazy dog"sv, // (33) >>> added back in
   "The quick brown fox jumps over a lazy dog"sv, // (33) >>> added back in
@@ -57,7 +59,7 @@ std::vector<std::string_view> pangrams {
   "Fix problem quickly with galvanized jets"sv, // (35)
   "Heavy boxes perform quick waltzes and jigs"sv, // (36)
   "Jinxed wizards pluck ivy from the big quilt"sv, // (36)
-  "Watch Jeopardy!, Alex Trebek’s fun TV quiz game"sv, // (37)
+  "Watch Jeopardy!, Alex Trebek's fun TV quiz game"sv, // (37)
 
 #ifdef AS_INCLUDE_KNOWN_ERRORS
   "Adjusting quiver and bow, Zompye killed the fox"sv, // (39) oops!
@@ -113,17 +115,17 @@ std::vector<std::string_view> pangrams {
   "While making deep excavations, we found some quaint bronze jewelry"sv, // (56)
 
 #ifdef AS_INCLUDE_KNOWN_ERRORS
-  "Engelbert Humperinck’s exquisitely frothy & vacuous waltz is a joy"sv, // (56) oops!
+  "Engelbert Humperinck's exquisitely frothy & vacuous waltz is a joy"sv, // (56) oops!
 #endif
-  "Engelbert Humpedrinck’s exquisitely frothy & vacuous waltz is a joy"sv, // fixed
+  "Engelbert Humpedrinck's exquisitely frothy & vacuous waltz is a joy"sv, // fixed
 
   "Six big juicy steaks sizzled in a pan as five workmen left the quarry"sv, // (56)
-  "The soprano took Mozart’s joyful quavers with grace and exuberance"sv, // (56)
+  "The soprano took Mozart's joyful quavers with grace and exuberance"sv, // (56)
   "We quickly seized the black axle and just saved it from going past him"sv, // (57)
   "If Grieg or Dvorak, for example, wrote jazz, it would be quaint and cheesy"sv, // (58)
   "While Suez sailors wax parquet decks, Afghan Jews vomit jauntily abaft"sv, // (59)
   "We promptly judged antique ivory buckles for the next prize"sv, // (59)
-  "Venerable Will played jazz sax ‘til 3 o’clock in the morning before he quit"sv, // (60)
+  "Venerable Will played jazz sax 'til 3 o'clock in the morning before he quit"sv, // (60)
   "The querulous snoozing taxi driver jumped crossly, woken by the foghorn"sv, // (60)
   "The public was amazed to view the quickness and dexterity of the juggler"sv, // (60)
   "The July sun caused a fragment of black pine wax to ooze on the velvet quilt"sv, // (61)
@@ -142,8 +144,8 @@ std::vector<std::string_view> pangrams {
 
   "Cwm fjord bank glyphs vext quiz"sv, // Amazingly, this 26-word-long sentence uses every letter only once,
                                        // though it uses some pretty archaic words; translates to
-                                       // “Carved symbols in a mountain hollow on the
-                                       // bank of an inlet irritated an eccentric person.”
+                                       // "Carved symbols in a mountain hollow on the
+                                       // bank of an inlet irritated an eccentric person."
   "\n"sv,
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -164,11 +166,11 @@ std::vector<std::string_view> pangrams {
   "English                   qwertyuiop asdfghjkl zxcvbnm"sv,
   "Cwm fjord veg balks nth pyx quiz"sv, // (Relaxing in basins at the end of inlets terminates the endless tests from the box.)
   "Cwm fjord bank glyphs vext quiz"sv, // (Carved symbols in a mountain hollow on the bank of an inlet irritated an eccentric person.)[1]
-  "Jink cwm, zag veldt, fob qursh pyx"sv, // (Cross valley and plain to steal coins from Saudi mint. – created by Stephen Wagner)
+  "Jink cwm, zag veldt, fob qursh pyx"sv, // (Cross valley and plain to steal coins from Saudi mint. â created by Stephen Wagner)
   "Junky qoph-flags vext crwd zimb"sv, // (An Abyssinian fly playing a Celtic violin was annoyed by trashy flags on which were the Hebrew letter qoph.)
-  "Squdgy fez, blank jimp crwth vox"sv, // (A short brimless felt hat barely blocks out the sound of a Celtic violin. – created by Claude Shannon)
+  "Squdgy fez, blank jimp crwth vox"sv, // (A short brimless felt hat barely blocks out the sound of a Celtic violin. â created by Claude Shannon)
   "Veldt jynx grimps waqf zho buck"sv, // (A grass-plains wryneck climbs upon a male yak-cattle hybrid that was donated under Islamic law.)
-  "Bortz waqf glyphs vex muck djin"sv, // (Signage indicating endowments for industrial diamonds annoy filth-spreading genies. – created by Ed Spargo)
+  "Bortz waqf glyphs vex muck djin"sv, // (Signage indicating endowments for industrial diamonds annoy filth-spreading genies. â created by Ed Spargo)
   "\n"sv,
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -176,11 +178,11 @@ std::vector<std::string_view> pangrams {
    * With abbreviations, acronyms, initialisms or proper nouns, all restricted
    * to dictionary words
    */
-  "Jumbling vext frowzy hacks PDQ"sv, // (Being bounced around quickly annoyed the disheveled taxi drivers. – all words in high school dictionary)
+  "Jumbling vext frowzy hacks PDQ"sv, // (Being bounced around quickly annoyed the disheveled taxi drivers. â all words in high school dictionary)
   "PR flacks quiz gym: TV DJ box when?"sv, // (Public relations agent asks sports room, when do television disc jockeys fight?)
-  "Zing, dwarf jocks vex lymph, Qutb"sv, // (Making a high-pitched sound, short athletes annoy their white blood plasma and an Islamic saint. – created by Peter M. Lella)
+  "Zing, dwarf jocks vex lymph, Qutb"sv, // (Making a high-pitched sound, short athletes annoy their white blood plasma and an Islamic saint. â created by Peter M. Lella)
   "Zing, vext cwm fly jabs Kurd qoph"sv, // (Making a high-pitched sound, annoyed mountain basin insect sticks Hebrew letter.)
-  "Kat veld zubr gif cwm jynx qophs"sv, // (European bison of a shrubby African plain make digital image files of Semitic letters from valley wrynecks. – discovered by Da-Shih Hu)
+  "Kat veld zubr gif cwm jynx qophs"sv, // (European bison of a shrubby African plain make digital image files of Semitic letters from valley wrynecks. â discovered by Da-Shih Hu)
   "\n"sv,
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -188,13 +190,13 @@ std::vector<std::string_view> pangrams {
    * With abbreviations, acronyms, contractions, initialisms, isolated letters,
    * proper nouns, Roman Numerals and not restricted to Dictionary Words
    */
-  "A zenith of Xvurj’s cwm KL Gybdpq"sv, // AS001 - added 'p'
+  "A zenith of Xvurj's cwm KL Gybdpq"sv, // AS001 - added 'p'
   "Zombies play crwth, quj FDG xvnk"sv,
-  "Blowzy night-frumps vex’d Jack Q"sv,
+  "Blowzy night-frumps vex'd Jack Q"sv,
   "Dwarf mobs quiz lynx.jpg, kvetch!"sv, // (Crowd of midgets question picture of wildcat, then complain.)
-  "Frowzy things plumb vex’d Jack Q"sv,
+  "Frowzy things plumb vex'd Jack Q"sv,
   "G.B. fjords vex quick waltz nymph"sv,
-  "Glum Schwartzkopf vex’d by NJ IQ"sv,
+  "Glum Schwartzkopf vexâ'd by NJ IQ"sv,
   "Gym DJ Beck vows phiz tranq flux"sv, // (Beck, the gymnasium DJ, promises a change in facial tranquilizers.)
   "Jerk gawps foxy Qum Blvd. chintz"sv,
   "JFK got my VHS, PC and XLR web quiz"sv,
@@ -203,8 +205,8 @@ std::vector<std::string_view> pangrams {
   "J.Q. Schwartz flung D.V. Pike my box"sv,
   "Jump dogs, why vex Fritz Blank QC?"sv,
   "Mr. Jock, TV quiz PhD, bags few lynx"sv,
-  "New job: fix Mr. Gluck’s hazy TV, PDQ!"sv, // (includes 5 punctuation symbols)
-  "Quartz glyph job vex’d cwm finks"sv, // (The act of carving symbols into quartz irritated ruffians from a Welsh river valley.)
+  "New job: fix Mr. Gluck's hazy TV, PDQ!"sv, // (includes 5 punctuation symbols)
+  "Quartz glyph job vex'd cwm finks"sv, // (The act of carving symbols into quartz irritated ruffians from a Welsh river valley.)
   "Quartz jock vends BMW glyph fix"sv,
   "The glib czar junks my VW Fox PDQ"sv,
   "\n"sv,
@@ -241,6 +243,7 @@ std::vector<std::string_view> pangrams {
   "How quickly daft jumping zebras vex"sv, // (30 letters)
   "Two driven jocks help fax my big quiz"sv, // (30 letters)
   "“Now fax quiz Jack!” my brave ghost pled"sv, // (30 letters) (Includes proper noun)
+//FIXME  "âNow fax quiz Jack!â my brave ghost pled"sv, // (30 letters) (Includes proper noun)
   "Jack, love my big wad of sphinx quartz!"sv, // (30 letters) (Includes proper noun)
   "Do wafting zephyrs quickly vex Jumbo?"sv, // (31 letters) (Includes proper noun)
   "Go, lazy fat vixen; be shrewd, jump quick"sv, // (31 letters)
@@ -264,7 +267,7 @@ std::vector<std::string_view> pangrams {
   "A very bad quack might jinx zippy fowls"sv, // (32 letters) (Contains all 26 letters in lower case)
   "Pack my box with five dozen liquor jugs"sv, // (32 letters) (Used for font samples in the catalog of the Kelsey Press Company, by Beagle Bros and in Space Shuttle; featured in Ella Minnow Pea)
   "Few quips galvanized the mock jury box"sv, // (32 letters)
-  "Quick brown fox jumps over the lazy dog"sv, // (32 letters) (Not attested as frequently as the traditional, and better-formed, The quick brown fox…, below)
+  "Quick brown fox jumps over the lazy dog"sv, // (32 letters) (Not attested as frequently as the traditional, and better-formed, The quick brown foxâ¦, below)
   "Quilt frenzy jackdaw gave them best pox"sv, // (33 letters)
   "Jumpy halfling dwarves pick quartz box"sv, // (33 letters)
   "Schwarzkopf vexed Iraq big-time in July"sv, // (33 letters) (Includes proper nouns)
@@ -280,17 +283,18 @@ std::vector<std::string_view> pangrams {
   "JCVD might pique a sleazy boxer with funk"sv, // (34 letters) (Includes abbreviation of proper noun)
   "Quizzical twins proved my hijack-bug fix"sv, // (34 letters)
   "Fix problem quickly with galvanized jets"sv, // (35 letters)
-  "The quick brown fox jumps over the lazy dog"sv, // (35 letters) (Used to test typewriters and computer keyboards, and as sample text; famous for its coherency, dating back to 1888. Sometimes erroneously quoted with “jumped”, omitting the letter s.)
+  "The quick brown fox jumps over the lazy dog"sv, // (35 letters) (Used to test typewriters and computer keyboards, and as sample text; famous for its coherency, dating back to 1888. Sometimes erroneously quoted with âjumpedâ, omitting the letter s.)
   "Waxy and quivering, jocks fumble the pizza"sv, // (35 letters)
   "When zombies arrive, quickly fax judge Pat"sv, // (35 letters) (Includes proper noun)
   "Heavy boxes perform quick waltzes and jigs"sv, // (36 letters)
-  "A wizard’s job is to vex chumps quickly in fog"sv, // (36 letters)
+  "A wizard's job is to vex chumps quickly in fog"sv, // (36 letters)
   "Sympathizing would fix Quaker objectives"sv, // (36 letters) (Includes proper noun)
   "Pack my red box with five dozen quality jugs"sv, // (36 letters)
-  "BlewJ’s computer quiz favored proxy hacking"sv, // (37 letters) (Includes proper noun)
-  "Quads of blowzy fjord ignite map vex’d chicks"sv, // (37 letters)
+  "BlewJ's computer quiz favored proxy hacking"sv, // (37 letters) (Includes proper noun)
+  "Quads of blowzy fjord ignite map vex'd chicks"sv, // (37 letters)
   "Fake bugs put in wax jonquils drive him crazy"sv, // (37 letters)
-  "Watch “Jeopardy!”, Alex Trebek’s fun TV quiz game"sv, // (37 letters) (Includes proper nouns and abbreviation)
+  "Watch Jeopardy!, Alex Trebek’s fun TV quiz game"sv, // (37 letters) (Includes
+//FIXME  "Watch âJeopardy!â, Alex Trebek's fun TV quiz game"sv, // (37 letters) (Includes proper nouns and abbreviation)
   "GQ jock wears vinyl tuxedo for showbiz promo"sv, // (37 letters) (Includes abbreviation)
   "The quick brown fox jumped over the lazy dogs"sv, // (37 letters)
   "Who packed five dozen old quart jugs in my box?"sv, // (37 letters)
@@ -300,29 +304,31 @@ std::vector<std::string_view> pangrams {
   "Prating jokers quizzically vexed me with fibs"sv, // (39 letters)
   "My faxed joke won a pager in the cable TV quiz show"sv, // (39 letters) (Includes abbreviation)
   "The quick onyx goblin jumps over the lazy dwarf"sv, // (39 letters) (From flavor text in a card in the Magic: the Gathering card game[3])
-  "The lazy major was fixing Cupid’s broken quiver"sv, // (39 letters) (Includes proper noun)
-  "Amazingly few discotheques provide jukeboxes"sv, // (40 letters) (only 5 words – fewer than all others in this list)
+  "The lazy major was fixing Cupid's broken quiver"sv, // (39 letters) (Includes proper noun)
+  "Amazingly few discotheques provide jukeboxes"sv, // (40 letters) (only 5 words â fewer than all others in this list)
   "Jacky can now give six big tips from the old quiz"sv, // (40 letters)
   "Lovak won the squad prize cup for sixty big jumps"sv, // (40 letters)
   "J. Fox made five quick plays to win the big prize"sv, // (40 letters)
-  "Foxy diva Jennifer Lopez wasn’t baking my quiche"sv, // (41 letters) (Includes proper noun)
+  "Foxy diva Jennifer Lopez wasn't baking my quiche"sv, // (41 letters) (Includes proper noun)
   "Cozy lummox gives smart squid who asks for job pen"sv, // (41 letters) (Used for font samples by the Macintosh, post-System 7, as well as on certain Palm products)
   "By Jove, my quick study of lexicography won a prize"sv, // (41 letters) (Includes proper noun)
   "Levi Lentz packed my bag with six quarts of juice"sv, // (41 letters)
   "Painful zombies quickly watch a jinxed graveyard"sv, // (42 letters)
-  "Fax back Jim’s Gwyneth Paltrow video quiz"sv, // (42 letters) (Includes proper nouns)
-  "As quirky joke, chefs won’t pay devil magic zebra tax"sv, // (42 letters)
+  "Fax back Jim's Gwyneth Paltrow video quiz"sv, // (42 letters) (Includes proper nouns)
+  "As quirky joke, chefs won't pay devil magic zebra tax"sv, // (42 letters)
   "My girl wove six dozen plaid jackets before she quit"sv, // (43 letters)
-  "Then a cop quizzed Mick Jagger’s ex-wives briefly"sv, // (43 letters) (Includes proper noun)
+  "Then a cop quizzed Mick Jagger's ex-wives briefly"sv, // (43 letters) (Includes proper noun)
   "Six big devils from Japan quickly forgot how to waltz"sv, // (44 letters) (Includes proper noun)
   "“Who am taking the ebonics quiz?”, the prof jovially axed"sv, // (44 letters)
-  "Why shouldn’t a quixotic Kazakh vampire jog barefoot?"sv, // (44 letters) (Includes proper noun)
+//FIXME  "âWho am taking the ebonics quiz?â, the prof jovially axed"sv, // (44 letters)
+  "Why shouldn't a quixotic Kazakh vampire jog barefoot?"sv, // (44 letters) (Includes proper noun)
   "Grumpy wizards make a toxic brew for the jovial queen"sv, // (44 letters)
   "Sixty zips were quickly picked from the woven jute bag"sv, // (45 letters)
   "Big July earthquakes confound zany experimental vow"sv, // (45 letters) (Includes proper noun)
   "Foxy parsons quiz and cajole the lovably dim wiki-girl"sv, // (45 letters)
   "Cute, kind, jovial, foxy physique, amazing beauty? Wowser!"sv, // (45 letters)
-  "Have a pick: twenty-six letters — no forcing a jumbled quiz!"sv, // (46 letters)
+  "Have a pick: twenty-six letters - no forcing a jumbled quiz!"sv, // (46 letters)
+//FIXME  "Have a pick: twenty-six letters â no forcing a jumbled quiz!"sv, // (46 letters)
   "A very big box sailed up then whizzed quickly from Japan"sv, // (46 letters)
   "Battle of Thermopylae: Quick javelin grazed wry Xerxes"sv, // (46 letters) (Includes proper nouns)
   "Jack quietly moved up front and seized the big ball of wax"sv, // (47 letters) (Includes proper noun)
@@ -367,11 +373,11 @@ std::vector<std::string_view> pangrams {
    * alphabetic characters):
    */
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
-  "With tenure, Suzie’d have all the more leisure for yachting, but her publications are no good"sv, // (for certain US accents and phonological analyses)
+  "With tenure, Suzie'd have all the more leisure for yachting, but her publications are no good"sv, // (for certain US accents and phonological analyses)
   "Shaw, those twelve beige hooks are joined if I patch a young, gooey mouth"sv, // (perfect for certain accents with the cot-caught merger)
   "Are those shy Eurasian footwear, cowboy chaps, or jolly earthmoving headgear?"sv, // (perfect for certain Received Pronunciation accents)
   "The beige hue on the waters of the loch impressed all, including the French queen, " // ~ continued on next line
-  "before she heard that symphony again, just as young Arthur wanted"sv, // (a phonetic, not merely phonemic, pangram. It contains both nasals [m] and [ɱ] (as in ‘symphony’), the fricatives [x] (as in ‘loch’) and [ç] (as in ‘hue’), and the ‘dark L’ [ɫ] (as in ‘all’) – in other words, it contains different allophones.)
+  "before she heard that symphony again, just as young Arthur wanted"sv, // (a phonetic, not merely phonemic, pangram. It contains both nasals [m] and [É±] (as in âsymphonyâ), the fricatives [x] (as in âlochâ) and [Ã§] (as in âhueâ), and the âdark Lâ [É«] (as in âallâ) â in other words, it contains different allophones.)
   "\n"sv,
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -385,9 +391,11 @@ std::vector<std::string_view> pangrams {
    * -  Danish
    */
   "Danish                    qwertyuiop asdfghjkl zxcvbnm"sv,
-  "Høj bly gom vandt fræk sexquiz på wc"sv, // (Each letter exactly once) Tall shy groom won dirty sex quiz on W.C.
+  "Høj bly gom vandt fræk sexquiz på wc"sv, // (Each letter exactly once) Tall shy
+//FIXME  "HÃ¸j bly gom vandt frÃ¦k sexquiz pÃ¥ wc"sv, // (Each letter exactly once) Tall shy groom won dirty sex quiz on W.C.
   "Tall shy groom won dirty sex quiz on W.C. - [b f j k p v]"sv,
   "Quizdeltagerne spiste jordbær med fløde, mens cirkusklovnen Walther spillede på xylofon"sv, // The quiz contestants ate strawberry with cream while Walter the circus clown played the xylophone.
+//FIXME  "Quizdeltagerne spiste jordbÃ¦r med flÃ¸de, mens cirkusklovnen Walther spillede pÃ¥ xylofon"sv, // The quiz contestants ate strawberry with cream while Walter the circus clown played the xylophone.
   "The quiz contestants ate strawberry with cream while Walter the circus clown played the xylophone - [f g j k v]"sv,
   "\n"sv,
 
@@ -401,13 +409,17 @@ std::vector<std::string_view> pangrams {
   "Drink some of this whisky which the boss finds excellent - [a g j p q u v z]"sv,
   "Portez ce vieux whisky au juge blond qui fume"sv, // Take this old whisky to the blond smoking judge
   "Take this old whisky to the blond smoking judge - [c f p q r v x z]"sv,
-  "Portez ce vieux whisky au juge blond qui a fumé"sv, // (variant with “é”) 
+  "Portez ce vieux whisky au juge blond qui a fumé"sv, // (variant with "é") 
+//FIXME  "Portez ce vieux whisky au juge blond qui a fumÃ©"sv, // (variant with âÃ©â) 
   "Take this old whisky to the blond judge who has smoked - [c f p q r v x z]"sv,
-  "Bâchez la queue du wagon-taxi avec les pyjamas du fakir"sv, // Tarpaulin up the taxi-railcar tail with the fakir’s pajamas
-  "Tarpaulin up the taxi-railcar tail with the fakir’s pajamas - [b d g o q v y z]"sv,
+  "Bâchez la queue du wagon-taxi avec les pyjamas du fakir"sv, // Tarpaulin up the taxi-railcar tail with the fakir's pajamas
+//FIXME  "BÃ¢chez la queue du wagon-taxi avec les pyjamas du fakir"sv, // Tarpaulin up the taxi-railcar tail with the fakirâs pajamas
+  "Tarpaulin up the taxi-railcar tail with the fakir's pajamas - [b d g o q v y z]"sv,
   "Voyez le brick géant que j’examine près du wharf"sv, // See the giant brig which I examine near the wharf
+//FIXME  "Voyez le brick gÃ©ant que 'examine prÃ¨s du wharf"sv, // See the giant brig which I examine near the wharf
   "See the giant brig which I examine near the wharf - [d j k l o p q u v y z]"sv,
   "Voix ambiguë d’un cœur qui au zéphyr préfère les jattes de kiwi"sv, // Ambiguous voice of a heart which prefers kiwi bowls to a zephyr
+//FIXME  "Voix ambiguÃ« 'un cÅur qui au zÃ©phyr prÃ©fÃ¨re les jattes de kiwi"sv, // Ambiguous voice of a heart which prefers kiwi bowls to a zephyr
   "Ambiguous voice of a heart which prefers kiwi bowls to a zephyr - [d j n q x]"sv,
   "Monsieur Jack, vous dactylographiez bien mieux que votre ami Wolf"sv, // Mister Jack, you typed much better than your friend Wolf [was used in the Swiss army to check the keyboard of typewriters before teletransmission]
   "Mister Jack, you typed much better than your friend Wolf - [g q v x z]"sv,
@@ -424,10 +436,14 @@ std::vector<std::string_view> pangrams {
   "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern"sv, // (no umlauts or ß): Franz chases in the completely shabby cab straight through Bavaria
   "Franz chases in the completely shabby taxi straight through Bavaria - [d j k q w]"sv,
   "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich"sv, // (with umlauts and ß): Victor chases twelve boxers across the great dam of Sylt
+//FIXME  "Victor jagt zwÃ¶lf BoxkÃ¤mpfer quer Ã¼ber den groÃen Sylter Deich"sv, // (with umlauts and Ã): Victor chases twelve boxers across the great dam of Sylt
   "Victor chases twelve boxers across the great dam of Sylt - j k n p q u z]"sv,
-  "“Fix, Schwyz!” quäkt Jürgen blöd vom Paß"sv, // (with umlauts and ß, each letter exactly once, according to the pre-1996 spelling rules): “Quick, Schwyz!” Jürgen squawks zanily from the pass
-  "“Quick, Schwyz!” Jürgen squawks zanily from the pass - [b d v x]"sv,
+  "“Fix, Schwyz!” quäkt Jürgen blöd vom Paß"sv, // (with umlauts and ß, each letter exactly once, according to the pre-1996 spelling rules): “Quick, Schwyz!” Jürgen squawks zanily from the pass - [b d v x]
+//FIXME  "âFix, Schwyz!â quÃ¤kt JÃ¼rgen blÃ¶d vom PaÃ"sv, // (with umlauts and Ã, each letter exactly once, according to the pre-1996 spelling rules): âQuick, Schwyz!â JÃ¼rgen squawks zanily from the pass
+  "“Quick, Schwyz!” Jürgen squawks zanily from the pass - [b d v x]"sv, 
+//FIXME  "âQuick, Schwyz!â JÃ¼rgen squawks zanily from the pass - [b d v x]"sv,
   "Falsches Üben von Xylophonmusik quält jeden größeren Zwerg"sv, // (used by KDE) - Wrong practising of xylophone music bothers every larger dwarf
+//FIXME  "Falsches Ãben von Xylophonmusik quÃ¤lt jeden grÃ¶Ãeren Zwerg"sv, // (used by KDE) - Wrong practising of xylophone music bothers every larger dwarf
   "Wrong practising of xylophone music bothers every larger dwarf - [j k q z]"sv,
   "\n"sv,
 
@@ -438,11 +454,14 @@ std::vector<std::string_view> pangrams {
    */
   "Icelandic                 qwertyuiop asdfghjkl zxcvbnm"sv,
   "Kæmi ný öxi hér, ykist þjófum nú bæði víl og ádrepa"sv,
+//FIXME  "KÃ¦mi nÃ½ Ã¶xi hÃ©r, ykist Ã¾jÃ³fum nÃº bÃ¦Ã°i vÃ­l og Ã¡drepa"sv,
   "If a new axe were here, thieves would feel increasing deterrence and punishment - [b j k q y z]"sv,
   "Svo hölt, yxna kýr þegði jú um dóp í fé á bæ"sv, // (each letter exactly once)
+//FIXME  "Svo hÃ¶lt, yxna kÃ½r Ã¾egÃ°i jÃº um dÃ³p Ã­ fÃ© Ã¡ bÃ¦"sv, // (each letter exactly once)
   "A cow in heat with such a limp would admittedly keep silent about drugs in sheep on a farm - [j q v x z]"sv,
   "Þú dazt á hnéð í vök og yfir blóm sexý pæju"sv, //(each letter exactly once, with z (obsolete spelling))
-  "You fell on the knee in a hole in the ice and over a sexy girl’s flower - [b j m p q z]"sv,
+//FIXME  "ÃÃº dazt Ã¡ hnÃ©Ã° Ã­ vÃ¶k og yfir blÃ³m sexÃ½ pÃ¦ju"sv, //(each letter exactly once, with z (obsolete spelling))
+  "You fell on the knee in a hole in the ice and over a sexy girl's flower - [b j m p q z]"sv,
   "\n"sv,
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -452,9 +471,12 @@ std::vector<std::string_view> pangrams {
    */
   "Irish                     qwertyuiop asdfghjkl zxcvbnm"sv,
   "D’fhuascail Íosa Úrmhac na hÓighe Beannaithe pór Éava agus Ádhaimh"sv,
+//FIXME  "Dâfhuascail Ãosa Ãrmhac na hÃighe Beannaithe pÃ³r Ãava agus Ãdhaimh"sv,
   "D’ḟuascail Íosa Úrṁac na hÓiġe Beannaiṫe pór Éaḃa agus Áḋaiṁ"sv, // Jesus, Son of the blessed Virgin, redeemed the seed of Eve and Adam.
+//FIXME  "Dâá¸uascail Ãosa Ãrá¹ac na hÃiÄ¡e Beannaiá¹«e pÃ³r Ãaá¸a agus Ãá¸aiá¹"sv, // Jesus, Son of the blessed Virgin, redeemed the seed of Eve and Adam.
   "Jesus, Son of the blessed Virgin, redeemed the seed of Eve and Adam - [c k p q w x y z]"sv,
   "Ċuaiġ bé ṁórṡáċ le dlúṫspád fíorḟinn trí hata mo ḋea-ṗorcáin ḃig"sv, // A greatly satisfied woman went with a truly white dense spade through the hat of my good little well-fattened pig (uses both regular and lenited (with dot above) letters)
+//FIXME  "ÄuaiÄ¡ bÃ© á¹Ã³rá¹¡Ã¡Ä le dlÃºá¹«spÃ¡d fÃ­orá¸inn trÃ­ hata mo á¸ea-á¹orcÃ¡in á¸ig"sv, // A greatly satisfied woman went with a truly white dense spade through the hat of my good little well-fattened pig (uses both regular and lenited (with dot above) letters)
   "A greatly satisfied woman went with a truly white dense spade through the hat of my good little well-fattened pig - [b c j k q v x z]"sv,
   "\n"sv,
 
@@ -469,10 +491,10 @@ std::vector<std::string_view> pangrams {
   "Quel fez sghembo copre davanti"sv,
   "That slanted fez covers the front - [b g i j k m p q u w x y]"sv,
   "Ma la volpe, col suo balzo, ha raggiunto il quieto Fido"sv,
-  "But the fox with her leap has reached the still Fido - [g j k m n q v y z]"sv, // [*”Fido” is a name commonly given to dogs.*]
+  "But the fox with her leap has reached the still Fido - [g j k m n q v y z]"sv, // [*âFidoâ is a name commonly given to dogs.*]
   "Quel vituperabile xenofobo zelante assaggia il whisky ed esclama: alleluja!"sv,
   "That blameworthy, zealous xenophobe tastes his whisky and exclaims: Alleluja! - [f g q v]"sv,
-  "Pranzo d’acqua fa volti sghembi"sv,
+  "Pranzo d'acqua fa volti sghembi"sv,
   "Lunch of water makes lopsided faces - [b g j q v x y z]"sv,
   "O templi, quarzi, vigne, fidi boschi!"sv,
   "O temples, quartzes, vines, faithful woods! - [b c g j k x y]"sv,
@@ -485,7 +507,8 @@ std::vector<std::string_view> pangrams {
   "Qualche vago ione tipo zolfo, bromo, sodio"sv,
   "Some vague ions, like sulfur, bromine, sodium - [c h j p q t w x y z]"sv,
   "Berlusconi? Quiz, tv, paghe da fame"sv, // (Umberto Eco)
-  "Tv? Quiz, Br, Flm, Dc… Oh, spenga!"sv, // (Umberto Eco, 1979, without foreign letters)
+  "Tv? Quiz, Br, Flm, Dc… Oh, spenga!"sv, // (Umberto Eco, 1979, without foreign
+//FIXME  "Tv? Quiz, Br, Flm, Dcâ¦ Oh, spenga!"sv, // (Umberto Eco, 1979, without foreign letters)
   "\n"sv,
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -507,20 +530,25 @@ std::vector<std::string_view> pangrams {
    * -  Norwegian
    *
    * Since Norwegian orthography does not include c, q, w, x or z, except in
-   * foreign borrowings that haven’t been naturalised, the possible pangrams
+   * foreign borrowings that haven't been naturalised, the possible pangrams
    * including all the 29 letters of the Norwegian alphabet will require using
    * two or more words with a distinctly foreign spelling.
    */
   "Norwegian                 qwertyuiop asdfghjkl zxcvbnm"sv,
-  "Vår sære Zulu fra badeøya spilte jo whist og quickstep i min taxi"sv,
+  "Vår sære Zulu fra badeøya spilte jo whist og quickstep i min taxi»"sv,
+//FIXME  "VÃ¥r sÃ¦re Zulu fra badeÃ¸ya spilte jo whist og quickstep i min taxi"sv,
   "Our strange Zulu from the bathing island actually played whist and quickstep in my taxi - [j v]"sv,
   "Høvdingens kjære squaw får litt pizza i Mexico by"sv,
-  "The chief’s dear squaw gets a little pizza in Mexico City = [b j k v]"sv,
+//FIXME  "HÃ¸vdingens kjÃ¦re squaw fÃ¥r litt pizza i Mexico by"sv,
+  "The chief's dear squaw gets a little pizza in Mexico City = [b j k v]"sv,
   "IQ-løs WC-boms uten hørsel skjærer god pizza på xylofon"sv,
+//FIXME  "IQ-lÃ¸s WC-boms uten hÃ¸rsel skjÃ¦rer god pizza pÃ¥ xylofon"sv,
   "IQ-less WC-bum without hearing cuts good pizza on xylophone - [f j k v]"sv,
   "Sær golfer med kølle vant sexquiz på wc i hjemby"sv,
+//FIXME  "SÃ¦r golfer med kÃ¸lle vant sexquiz pÃ¥ wc i hjemby"sv,
   "Strange golfer with club won sex quiz on W.C. in hometown - [d j k p v y]"sv,
   "Jeg begynte å fortære en sandwich mens jeg kjørte taxi på vei til quiz"sv,
+//FIXME  "Jeg begynte Ã¥ fortÃ¦re en sandwich mens jeg kjÃ¸rte taxi pÃ¥ vei til quiz"sv,
   "I started to devour a sandwich while I was riding a taxi on the way to the quiz - [b f j k m p]"sv,
   "\n"sv,
 
@@ -531,6 +559,7 @@ std::vector<std::string_view> pangrams {
    */
   "Scottish Gaelic           qwertyuiop asdfghjkl zxcvbnm"sv,
   "Mus d’fhàg Cèit-Ùna ròp Ì le ob"sv, // Before Kate-Una left the Iona cattle auction with hops.
+//FIXME  "Mus d'fhÃ g CÃ¨it-Ãna rÃ²p Ã le ob"sv, // Before Kate-Una left the Iona cattle auction with hops.
   "Before Kate-Una left the Iona cattle auction with hops - [d g j m q v x y z]"sv,
   "\n"sv,
 
@@ -540,25 +569,38 @@ std::vector<std::string_view> pangrams {
    * -  Spanish
    */
   "Spanish                   qwertyuiop asdfghjkl zxcvbnm"sv,
-  "Benjamín pidió una bebida de kiwi y fresa; Noé, sin vergüenza, la más exquisita champaña del menú"sv, // (with all letters and diacritics, single sentence) 
+  "Benjamín pidió una bebida de kiwi y fresa; Noé, sin vergüenza, la más exquisita champaña del menú"sv, // (with all letters and diacritics, single sentence)
+//FIXME  "BenjamÃ­n pidiÃ³ una bebida de kiwi y fresa; NoÃ©, sin vergÃ¼enza, la mÃ¡s exquisita champaÃ±a del menÃº"sv, // (with all letters and diacritics, single sentence)
   "Benjamin ordered a kiwi and strawberry beverage; Noah, without shame, the most exquisite champagne on the menu - [f l z]"sv,
   "José compró una vieja zampoña en Perú. Excusándose, Sofía tiró su whisky al desagüe de la banqueta"sv, // (with all letters and diacritics, two sentences) 
+//FIXME  "JosÃ© comprÃ³ una vieja zampoÃ±a en PerÃº. ExcusÃ¡ndose, SofÃ­a tirÃ³ su whisky al desagÃ¼e de la banqueta"sv, // (with all letters and diacritics, two sentences)
   "José bought an old panpipe in Peru. Excusing herself, Sofía threw her whiskey on the sink of the sidewalk - [m q v z]"sv,
+//FIXME  "JosÃ© bought an old panpipe in Peru. Excusing herself, SofÃ­a threw her whiskey on the sink of the sidewalk - [m q v z]"sv,
   "El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el saxofón detrás del palenque de paja"sv, // (with all letters and diacritics, two sentences) (Used in Windows as sample text)
+//FIXME  "El veloz murciÃ©lago hindÃº comÃ­a feliz cardillo y kiwi. La cigÃ¼eÃ±a tocaba el saxofÃ³n detrÃ¡s del palenque de paja"sv, // (with all letters and diacritics, two sentences) (Used in Windows as sample text)
   "The quick Hindu bat was happily eating golden thistle and kiwi. The stork was playing the saxophone behind the straw arena - [f j m v z]"sv,
   "El pingüino Wenceslao hizo kilómetros bajo exhaustiva lluvia y frío; añoraba a su querido cachorro"sv, // (with ch, ñ, rr and ll)
+//FIXME  "El pingÃ¼ino Wenceslao hizo kilÃ³metros bajo exhaustiva lluvia y frÃ­o; aÃ±oraba a su querido cachorro"sv, // (with ch, Ã±, rr and ll)
   "Wenceslao the penguin traveled kilometers under exhaustive rain and cold; he longed for his dear puppy - [b j q z]"sv,
   "La niña, viéndose atrapada en el áspero baúl índigo y sintiendo asfixia, lloró de vergüenza; mientras que la frustrada madre llamaba a su hija diciendo: “¿Dónde estás Waleska?”"sv,
-  "The girl, finding herself trapped inside the rough blue-violet chest and feeling suffocation, cried out of shame; whilst the frustrated mother called her daughter saying: “Where are you Waleska?” - [j q x z]"sv,
+//FIXME  "La niÃ±a, viÃ©ndose atrapada en el Ã¡spero baÃºl Ã­ndigo y sintiendo asfixia, llorÃ³ de vergÃ¼enza; mientras que la frustrada madre llamaba a su hija diciendo: âÂ¿DÃ³nde estÃ¡s Waleska?â"sv,
+  "The girl, finding herself trapped inside the rough blue-violet chest and feeling suffocation, cried out of shame; whilst the frustrated mother called her daughter saying: “Where are you Waleska?”"sv,
+//FIXME  "The girl, finding herself trapped inside the rough blue-violet chest and feeling suffocation, cried out of shame; whilst the frustrated mother called her daughter saying: âWhere are you Waleska?â - [j q x z]"sv,
   "Jovencillo emponzoñado de whisky: ¡qué figurota exhibe!"sv,
+//FIXME  "Jovencillo emponzoÃ±ado de whisky: Â¡quÃ© figurota exhibe!"sv,
   "Whisky-intoxicated youngster – what a figure he’s showing! - [b j l m p q v z]"sv,
-  "Ese libro explica en su epígrafe las hazañas y aventuras de Don Quijote de la Mancha en Kuwait"sv,
+//FIXME  "Whisky-intoxicated youngster â what a figure he's showing! - [b j l m p q v z]"sv,
+  "se libro explica en su epígrafe las hazañas y aventuras de Don Quijote de la Mancha en Kuwait"sv,
+//FIXME  "Ese libro explica en su epÃ­grafe las hazaÃ±as y aventuras de Don Quijote de la Mancha en Kuwait"sv,
   "That book explains in its epigraph the deeds and adventures of Don Quijote de la Mancha in Kuwait - [y z]"sv,
   "Queda gazpacho, fibra, látex, jamón, kiwi y viñas"sv,
+//FIXME  "Queda gazpacho, fibra, lÃ¡tex, jamÃ³n, kiwi y viÃ±as"sv,
   "There are still gazpacho, fibre, latex, ham, kiwi and vineyards - [j q u]"sv,
   "Whisky bueno: ¡excitad mi frágil pequeña vejez!"sv,
+//FIXME  "Whisky bueno: Â¡excitad mi frÃ¡gil pequeÃ±a vejez!"sv,
   "Good whisky, excite my frail, little old age! - [b j n p q u v z]"sv,
   "Es extraño mojar queso en la cerveza o probar whisky de garrafa"sv,
+//FIXME  "Es extraÃ±o mojar queso en la cerveza o probar whisky de garrafa"sv,
   "It is strange to dip cheese in beer or to try a whisky out of a carafe - [j l m q v x z]"sv,
   "\n"sv,
 
@@ -568,13 +610,17 @@ std::vector<std::string_view> pangrams {
    * -  Swedish
    */
   "Swedish                   qwertyuiop asdfghjkl zxcvbnm"sv,
-  "Flygande bäckasiner söka hwila på mjuka tuvor"sv, // (lacks q, x and z, old spelling ‘hw’) (Sometimes “strax” is added to include X.)
+  "Flygande bäckasiner söka hwila på mjuka tuvor"sv, // (lacks q, x and z, old spelling âhwâ) (Sometimes âstraxâ is added to include X.)
+//FIXME  "Flygande bÃ¤ckasiner sÃ¶ka hwila pÃ¥ mjuka tuvor"sv, // (lacks q, x and z, old spelling âhwâ) (Sometimes âstraxâ is added to include X.)
   "Flying snipes seek rest on soft tufts [of grass] = [b c d h j m q v w x z]"sv,
   "Yxskaftbud, ge vår WC-zonmö IQ-hjälp"sv, // (each letter exactly once)
+//FIXME  "Yxskaftbud, ge vÃ¥r WC-zonmÃ¶ IQ-hjÃ¤lp"sv, // (each letter exactly once)
   "Axe handle courier, give our WC zone maiden IQ help - [b f j k s t y]"sv,
-  "Gud hjälpe Zorns mö qvickt få byxa"sv, // (each letter once, old spelling ‘qv’, lacks foreign letter ‘w’) 
-  "God help Zorn’s maiden get trousers quickly - [b f j v w x]"sv,
+  "Gud hjälpe Zorns mö qvickt få byxa"sv, // (each letter once, old spelling âqvâ, lacks foreign letter âwâ)
+//FIXME  "Gud hjÃ¤lpe Zorns mÃ¶ qvickt fÃ¥ byxa"sv, // (each letter once, old spelling âqvâ, lacks foreign letter âwâ) 
+  "God help Zorn's maiden get trousers quickly - [b f j v w x]"sv,
   "Byxfjärmat föl gick på duvshowen"sv, // (lacks q and z, extra f to include common ligatures fö and fj)
+//FIXME  "ByxfjÃ¤rmat fÃ¶l gick pÃ¥ duvshowen"sv, // (lacks q and z, extra f to include common ligatures fÃ¶ and fj)
   "Trouser-estranged foal went to the pigeon show - [b c j k m q v x y z]"sv,
   "\n"sv,
 
@@ -584,8 +630,9 @@ std::vector<std::string_view> pangrams {
    * -  Welsh
    */
   "Welsh                     qwertyuiop asdfghjkl zxcvbnm"sv,
-  "Parciais fy jac codi baw hud llawn dŵr ger tŷ Mabon"sv, // I parked my magic JCB [digger] full of water near Mabon’s house
-  "I parked my magic JCB [digger] full of water near Mabon’s house - [q v x z]"sv,
+  "Parciais fy jac codi baw hud llawn dŵr ger tŷ Mabon"sv, // I parked my magic JCB [digger] full of water near Mabon's house
+//FIXME  "Parciais fy jac codi baw hud llawn dÅµr ger tÅ· Mabon"sv, // I parked my magic JCB [digger] full of water near Mabon's house
+  "I parked my magic JCB [digger] full of water near Mabon's house - [q v x z]"sv,
   "\n"sv,
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
 
@@ -593,7 +640,7 @@ std::vector<std::string_view> pangrams {
    * - The Daily Pangram
    * @see https://dailypangram.tumblr.com
    */
-  "After writing exactly 2k a-z sentences, I’ve quit the Daily Pangram job"sv, // (56 letters)
+  "After writing exactly 2k a-z sentences, I've quit the Daily Pangram job"sv, // (56 letters)
   "\n"sv,
   
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
@@ -607,7 +654,9 @@ std::vector<std::string_view> pangrams {
   "yz"sv,
 
   "012345678901234567890123456789"sv, // no alphabetics at all!
-  ""sv, // empty string
+  "qwertyuiop asdfghjkl zxcvbnm "sv, // TODO: AS000 - weirdness with gcc 15.2.0_ - empty string
+  " "sv, // TODO: AS000 - weirdness with gcc 15.2.0_ - empty string
+  ""sv, // TODO: AS000 - weirdness with gcc 15.2.0_ - empty string
 
   //+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
   // Utter bollox from FaceBook:
@@ -619,3 +668,4 @@ std::vector<std::string_view> pangrams {
 };
 
 } // end of namespace pang
+

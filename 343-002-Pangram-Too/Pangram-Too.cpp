@@ -31,7 +31,7 @@ constexpr
 struct pgm_info {
   static constexpr std::uint16_t ver { 0u };
   static constexpr std::uint16_t rel { 1u };
-  static constexpr std::uint16_t mod { 0u };
+  static constexpr std::uint16_t mod { 1u };  // FIXME: AS000 - weirdness with gcc 15.2.0_1
   static constexpr std::string_view pgm { "Pangram-Too"sv };
 } vi;
 
@@ -51,11 +51,14 @@ void perform_pangram();
 int main([[maybe_unused]] int const argc, [[maybe_unused]] char const * const argv[]) {
   int RC { 0 };
   std::print("Program         : {0}\n"
-             "Version [V.R.M] : {1:02}.{2:02}.{3:02}\n\n",
+             "Version [V.R.M] : {1:02}.{2:02}.{3:02}\n"
+             "Compiler Ver    : {4}\n" // FIXME: AS000 - weirdness with gcc 15.2.0_1
+             "\n",
              pang::vi.pgm,
              pang::vi.ver,
              pang::vi.rel,
-             pang::vi.mod);
+             pang::vi.mod,
+             __cplusplus); // FIXME: AS000 - weirdness with gcc 15.2.0_1
 
   std::print("<<< Begin Run. >>>\n");
 
@@ -83,8 +86,9 @@ void perform_pangram() {
 
   // loop through the sample data checking each entry for pangrams
   std::for_each(pangrams.cbegin(), pangrams.cend(), [&missing](auto const & pg) {
-    if (pg[0] == '\n') {
-      std::print("\n"); // 1st char is newline, print and skip
+    if (!pg.empty() && iscntrl(pg[0])) { //FIXME - AS000 - handle empty string gracefully
+    //FIXME if (pg[0] == '\n') {
+      std::cout << std::endl; // 1st char is newline, print and skip
     }
     else {
       auto is_pangram = isPangram(pg, missing); //  call the pangram function
@@ -95,7 +99,8 @@ void perform_pangram() {
       });
 
     // report
-      std::print("{0:>8} : «{1}» [{2:0>3}]\n", is_pangram, pg, alfas);
+      std::print("{0:>8} : \u00ab{1}\u00bb [{2:0>3}]\n", is_pangram, pg, alfas);
+  
       if (!is_pangram) {
         // GRONK! string is not a pangram, find out why
         if (pg.length() < LETTER_ARRAY_SZ) {
@@ -109,7 +114,7 @@ void perform_pangram() {
             return std::isalpha(mc);
           });
           // display the list of alpabetics missing from the string
-          std::print("{0:>8} : «{1}» [{2:0>2}]\n", "missing", missing, ma);
+          std::print("{0:>8} : \u00ab{1}\u00bb [{2:0>2}]\n", "missing", missing, ma);
         }
       }
     }
@@ -130,21 +135,22 @@ bool isPangram(std::string_view const & ps, std::string & missing) {
 #else
   auto transformed = ""s;
 #endif
-  transformed.resize(ps.size(), ' ');
 
-  // create a work string by converting input to lower case
-  std::transform(ps.cbegin(), ps.cend(), transformed.begin(), [](unsigned const char & ch) {
-    auto lc = std::tolower(ch);
-    return lc;
-  });
-
-  missing.clear();  // make sure the 'missing' string is empty
-
-  if (transformed.length() < LETTER_ARRAY_SZ) {
+  if (ps.length() < LETTER_ARRAY_SZ) {
     // less than 26 letters in the string means it's not a pangram
     is_pangram = false; // and we're done!
   }
   else {
+    transformed.resize(ps.size(), ' ');
+
+    // create a work string by converting input to lower case
+    std::transform(ps.cbegin(), ps.cend(), transformed.begin(), [](unsigned const char & ch) {
+      auto lc = std::tolower(ch);
+      return lc;
+    });
+
+    missing.clear();  // make sure the 'missing' string is empty
+
     // Create a boolean array, of size 26. Distinct letter indices will be set to true
     std::array<bool, LETTER_ARRAY_SZ> present = { false };
     auto distinct = 0u; // counter of number of distinct letters
