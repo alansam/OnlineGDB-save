@@ -35,6 +35,12 @@ struct pgm_info {
   static constexpr std::string_view pgm { "Pangram-Too"sv };
 } vi;
 
+// format string for std::print
+static
+constexpr
+const
+auto F_PAN000 { "[{2:0>3}] {0:>8} | \u00ab{1}\u00bb \n"sv };
+
 /**
  *  Function prototypes
  */
@@ -99,13 +105,15 @@ void perform_pangram() {
       });
 
     // report
-      std::print("{0:>8} : \u00ab{1}\u00bb [{2:0>3}]\n", is_pangram, pg, alfas);
+//    std::print("{0:>8} : \u00ab{1}\u00bb [{2:0>3}]\n", is_pangram, pg, alfas);
+      std::print(F_PAN000, is_pangram, pg, alfas);
   
       if (!is_pangram) {
         // GRONK! string is not a pangram, find out why
         if (pg.length() < LETTER_ARRAY_SZ) {
           // string too short to be a pangram
-          std::print("{0:>8} : {1}\n", "error", "string too short");
+//        std::print("{0:>8} : {1}\n", "error", "string too short");
+          std::print(F_PAN000, "error", "string too short", 0);
         }
         else {
           // string is missing one or more alpabetics
@@ -114,7 +122,8 @@ void perform_pangram() {
             return std::isalpha(mc);
           });
           // display the list of alpabetics missing from the string
-          std::print("{0:>8} : \u00ab{1}\u00bb [{2:0>2}]\n", "missing", missing, ma);
+//        std::print("{0:>8} : \u00ab{1}\u00bb [{2:0>2}]\n", "missing", missing, ma);
+          std::print(F_PAN000, "missing", missing, ma);
         }
       }
     }

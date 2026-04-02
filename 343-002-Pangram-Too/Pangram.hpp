@@ -117,7 +117,7 @@ std::vector<std::string_view> pangrams {
 #ifdef AS_INCLUDE_KNOWN_ERRORS
   "Engelbert Humperinck's exquisitely frothy & vacuous waltz is a joy"sv, // (56) oops!
 #endif
-  "Engelbert Humpedrinck's exquisitely frothy & vacuous waltz is a joy"sv, // fixed
+  "Engelbert Humperdinck's exquisitely frothy & vacuous waltz is a joy"sv, // fixed
 
   "Six big juicy steaks sizzled in a pan as five workmen left the quarry"sv, // (56)
   "The soprano took Mozart's joyful quavers with grace and exuberance"sv, // (56)
