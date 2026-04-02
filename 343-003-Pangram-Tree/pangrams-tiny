@@ -1,0 +1,8 @@
+Quick brown fox jumps over the lazy dog
+The quick brown fox jumps over the lazy dog
+A quick brown fox jumps over the lazy dog
+The quick brown fox jumps over a lazy dog
+The kuick brown fox jumps over the lazy dog  // should fail
+The quick brown fox jumped over the lazy dog // common error
+The quick brown fox jumped over the lazy dogs
+Thë qüïck bröwñ föx jümps övër ä läzy dög  // contains accented letters, should fail
