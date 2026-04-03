@@ -353,7 +353,7 @@ int main(int argc, char const * argv[]) {
               << std::setw(7)  << m1.val1() << " = "s
               << std::setw(7)  << m1r << '\n';
     std::cout << std::setw(10) << "divide: "
-              << std::setw(7)  << d1.val0() << m1.oper()
+              << std::setw(7)  << d1.val0() << d1.oper()
               << std::setw(7)  << d1.val1() << " = "s
               << std::setw(7)  << d1r << '\n';
     std::cout << std::string(80, '-') << '\n';
