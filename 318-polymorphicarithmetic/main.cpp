@@ -409,10 +409,15 @@ int main(int argc, char const * argv[]) {
   
     std::cout << std::string(80, '~') << '\n';
     std::cout << std::endl;
+  }
+  std::cout << std::endl;
 
+  {
+    auto d3(d1);
     try {
       d3.val1(0.0);
-      d3r = d3();
+      std::cout << d3 << '\n';
+      auto d3r = d3();
       std::cout << d3 << " = " << std::setw(7) << d3r << '\n';
     }
     catch (std::exception & ex) {
